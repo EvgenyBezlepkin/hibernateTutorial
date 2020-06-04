@@ -1,0 +1,34 @@
+
+
+
+HQL
+HQL supports various aggregate functions – min(), max(), sum(), avg(), and count() in the SELECT statement.
+см public Long countInstrument()
+
+
+
+Hibernate and JPA (history)
+Разработчики HIBERNATE пошли на то, чтобы в HIBERNATE имелось два пути работы -
+старый путь - нативный HIBERNATE (через интерфейс Session) и новый путь JPA (через интерфейс EntityManager).
+Интерфейсы разные, методы как правило имеют одинаковые названия.
+Различия есть и в других элементах - например, HIBERNATE конфигурируется файлом hibernate.cfg.xml, основанном на dtd,
+а JPA - persistence.xml, основанном на xsd. При этом, функциональность нативного HIBERNATE значительно больше, чем у JPA.
+Реализация EntityManager является оберткой (wrap) реализации Session.
+Если Вы выбираете путь JPA, то всегда имеете возможность быстро перейти, на другие реализации JPA.
+Такая возможность может показаться единственным преимуществом EntityManager перед Session, при существенно меньшем объеме функциональности.
+
+
+
+C3PO
+c3p0 is a Java library that provides a convenient way for managing database connections.
+
+
+
+Hibernate OGM
+provides Java Persistence API (JPA) support for NoSQL datastores.
+
+
+
+1
+
+
