@@ -8,10 +8,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
+// TODO аннотация @Transactional (фреймворк Spring позволяет не беспокоиться о транзакционности методов hibernate)
+// TODO аннотация @Repository
 @Transactional
 @Repository("dancerDao")
 public class DancerDaoImpl implements DancerDao {
 
+    // TODO объект SessionFactory предоставляет объект Session
     private SessionFactory sessionFactory;
 
     public SessionFactory getSessionFactory() {

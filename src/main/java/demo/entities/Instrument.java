@@ -15,11 +15,13 @@ public class Instrument implements Serializable {
 	@Column(name = "INSTRUMENT_ID", nullable = false)
 	private String instrumentId;
 
-	// вставляет переменную перечисления вместо порядкового номера
+	// TODO втроенный Enum
+	// аннотация вставляет переменную перечисления вместо порядкового номера
 	@Enumerated(EnumType.STRING)
 	@Column(name = "INSTRUMENT_TYPE", nullable = false)
 	private InstrumentType instrumentType;
 
+	// TODO аннотация @ManyToMany - подчиненная таблица
 	@ManyToMany
 	@JoinTable(name = "singer_instrument",
 			joinColumns = @JoinColumn(name = "INSTRUMENT_ID"),

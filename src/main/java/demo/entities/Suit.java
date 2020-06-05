@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+// TODO класс встраиваемой коллекции (встроена в класс Dancer)
+// если встраиваемый класс не является сущностью
 @Embeddable
 public class Suit implements Serializable {
 

@@ -29,21 +29,18 @@ public class Singer extends Performer {
 	public static final String FIND_SINGER_BY_ID = "Singer.findById";
 	public static final String FIND_ALL_WITH_ALBUM = "Singer.findAllWithAlbum";
 
-
-	@OneToOne
-	private Manager manager;
-
+	// TODO аннотация @OneToMany (сторона держателя связи)
 	// один ко многим - у одного певца много альбомов , свойства опциональны
 	// mappedBy - имя таблицы, которая владеет связью
 	// fetch() - default LAZY;
-	// orphanRemoval - удаляет несвязанные сущности
+	// orphanRemoval - удалит альбом при удалении его из коллекции
 	@OneToMany(
 			mappedBy = "singer",
 			cascade=CascadeType.ALL,
 			orphanRemoval=true)
 	private Set<Album> albums = new HashSet<>();
 
-	// многие ко многим - у одного певца мб много инструментов, у одного инструмента мб много певцов, ненаправленная (нет mapped by)
+	// TODO @ManyToMany (сторона держателя) многие ко многим - у одного певца мб много инструментов, у одного инструмента мб много певцов, ненаправленная (нет mapped by)
 	@ManyToMany
 	// определяет параметры соединяющей таблицы
 	// joinColumns - имя поля с этой стороны, foreignKey - имя внешнего ключа
@@ -82,13 +79,13 @@ public class Singer extends Performer {
 		return getInstruments().add(instrument);
 	}
 
-	public Manager getManager() {
-		return manager;
-	}
-
-	public void setManager(Manager manager) {
-		this.manager = manager;
-	}
+//	public Manager getManager() {
+//		return manager;
+//	}
+//
+//	public void setManager(Manager manager) {
+//		this.manager = manager;
+//	}
 
 	public String toString() {
 		return "Singer - Id: " + id + ", First name: " + firstName

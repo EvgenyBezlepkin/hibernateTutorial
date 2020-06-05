@@ -41,14 +41,13 @@ public class App {
 //        album.setTitle("My Kind of Blues");
 //        album.setReleaseDate(new java.sql.Date((new GregorianCalendar(1961, 7, 18)).getTime().getTime()));
 //        singer.addAlbum(album);
+//        Performer performer = singerDao.save(singer);
 //
 //        Manager manager = new Manager();
 //        manager.setFirstName("Jon");
 //        manager.setLastName("Neue");
+//        manager.setId(performer.getId());
 //        managerDao.save(manager);
-//        singer.setManager(manager);
-//
-//        singerDao.save(singer);
 
         //TODO сделать поиск по id и удаление
 

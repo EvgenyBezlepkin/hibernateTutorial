@@ -3,6 +3,7 @@ package demo.entities;
 import javax.persistence.*;
 import java.util.Date;
 
+// TODO пример отображения наследования InheritanceType.SINGLE_TABLE
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Performer {

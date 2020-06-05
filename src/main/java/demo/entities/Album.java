@@ -19,11 +19,13 @@ public class Album {
 	@Column
 	private String title;
 
+	// TODO аннотация @Temporal(TemporalType.DATE) - меняет java поле на указанный в аннотации тип
 	@Temporal(TemporalType.DATE)
 	@Column(name = "RELEASE_DATE")
 	private Date releaseDate;
 
-	// многие к одному - многими альбомами владеет один певец
+	// TODO аннотация @ManyToOne (многие к одному - многим альбомам соответствует один певец)
+	// в таблице Album будет внешний ключ на таблицу Singer
 	@ManyToOne
 	@JoinColumn(name = "SINGER_ID", foreignKey = @ForeignKey(name = "fk_foo"))
 	private Singer singer;

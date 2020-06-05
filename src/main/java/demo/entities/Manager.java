@@ -15,9 +15,15 @@ public class Manager {
     @Column(name = "LAST_NAME")
     private String lastName;
 
+    // TODO аннотация @OneToOne - (отображается как внешний ключ на связанную табицу)
+    // аннотация @JoinTable создаст промежуточную таблицу к этой связи
+    @OneToOne
+	// TODO аннотация @PrimaryKeyJoinColumn
+	//@PrimaryKeyJoinColumn
+	// стратегия, при которой две связанные аннотацией @OneToOne таблицы будут иметь общий первичный ключ (без внешнего ключа)
+    private Singer singer;
 
-    // встроенный атрибут и переопределение имени его оригинальных полей
-
+    // TODO встроенный атрибут и переопределение имени его оригинальных полей
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name="name",
@@ -58,5 +64,13 @@ public class Manager {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Singer getSinger() {
+        return singer;
+    }
+
+    public void setSinger(Singer singer) {
+        this.singer = singer;
     }
 }
