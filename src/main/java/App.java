@@ -45,6 +45,8 @@ public class App {
 //
 //        singerDao.save(singer);
 
+        //TODO сделать поиск по id и удаление
+
         ctx.close();
     }
 

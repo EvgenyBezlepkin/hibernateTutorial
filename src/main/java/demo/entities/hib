@@ -29,6 +29,14 @@ provides Java Persistence API (JPA) support for NoSQL datastores.
 
 
 
+Стратегии отображения наследования
+1 одна таблица для кажого класса с исключением полиморфизма и отношений наследования из SQL
+    (для полиморфизма используется union, нельзя GeneratedTuoe = IDENTITY) - InheritanceType.TABLE_PER_CLASS
+2 единая таблица (полиморфизм - за счет денормализации схемы SQL), если в подклассах мало новых полей - InheritanceType.SINGLE_TABLE
+3 одна таблица для каждого подкласса (is a меняется на has a c применением join), если в подклассах много новых полей - InheritanceType.JOINED
+
+
+
 1
 
 

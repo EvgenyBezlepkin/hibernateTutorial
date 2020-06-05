@@ -30,7 +30,7 @@ public class HibernateConfig {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
         properties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
-        properties.put("hibernate.hbm2ddl.auto", "create");
+        properties.put("hibernate.hbm2ddl.auto", "update");
         // количество операций обновления, которые дб сгруппированы в пакет
         properties.put("hibernate.jdbc.batch_size", 10);
         // количество записецй из результирующего набора

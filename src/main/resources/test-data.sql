@@ -2,9 +2,9 @@
 insert into manager (first_name, last_name, soundRecordingStudio_address, SoundRecordingStudio_name) values ('Tim', 'Rott', 'Orlean street', 'A');
 insert into manager (first_name, last_name, soundRecordingStudio_address, SoundRecordingStudio_name) values ('Alfonse', 'Gott', 'Oklend street', 'A');
 
-insert into singer (first_name, last_name, birth_date, manager_id) values ('John', 'Mayer', '1977-10-16', 1);
-insert into singer (first_name, last_name, birth_date, manager_id) values ('Eric', 'Clapton', '1945-03-30', 1);
-insert into singer (first_name, last_name, birth_date, manager_id) values ('John', 'Butler', '1975-04-01', 2);
+insert into performer (dtype, first_name, last_name, birth_date, manager_id) values ('S', 'John', 'Mayer', '1977-10-16', 1);
+insert into performer (dtype, first_name, last_name, birth_date, manager_id) values ('S','Eric', 'Clapton', '1945-03-30', 1);
+insert into performer (dtype, first_name, last_name, birth_date, manager_id) values ('S','John', 'Butler', '1975-04-01', 2);
 
 insert into album (singer_id, title, release_date) values (1, 'The Search For Everything', '2017-01-20');
 insert into album (singer_id, title, release_date) values (1, 'Battle Studies', '2009-11-17');
