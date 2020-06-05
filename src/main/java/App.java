@@ -1,10 +1,9 @@
 import demo.configuration.HibernateConfig;
+import demo.dao.DancerDao;
 import demo.dao.InstrumentDao;
 import demo.dao.ManagerDao;
 import demo.dao.SingerDao;
-import demo.entities.Album;
-import demo.entities.Manager;
-import demo.entities.Singer;
+import demo.entities.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 
@@ -12,6 +11,7 @@ import javax.sound.midi.Instrument;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Set;
 
 public class App {
 
@@ -20,13 +20,18 @@ public class App {
         SingerDao singerDao = ctx.getBean(SingerDao.class);
         InstrumentDao instrumentDao = ctx.getBean(InstrumentDao.class);
         ManagerDao managerDao = ctx.getBean(ManagerDao.class);
+        DancerDao dancerDao = ctx.getBean(DancerDao.class);
         Singer singer1 = singerDao.findById(3l);
 
         System.out.println("Count of instruments: " + instrumentDao.countInstrument());
 
         listSingersWithAlbum(singerDao.findAllWithAlbum());
 
+        Dancer dancer = dancerDao.findByFirstName("ACDC");
+        Set<Suit> suits = dancer.getSuits();
+        suits.forEach(System.out::println);
 
+// пример вставки
 //        Singer singer = new Singer();
 //        singer.setFirstName("BB");
 //        singer.setLastName("King");

@@ -1,4 +1,9 @@
 
+insert into performer (dtype, first_name, last_name, birth_date) values ('D', 'ACDC', 'Music', '1990-10-16');
+
+insert into suits (id, suit, height, weight) value (1, 'Pretty', 1,2 );
+insert into suits (id, suit, height, weight) value (1, 'Awful', 1,2);
+
 insert into manager (first_name, last_name, soundRecordingStudio_address, SoundRecordingStudio_name) values ('Tim', 'Rott', 'Orlean street', 'A');
 insert into manager (first_name, last_name, soundRecordingStudio_address, SoundRecordingStudio_name) values ('Alfonse', 'Gott', 'Oklend street', 'A');
 
@@ -6,10 +11,10 @@ insert into performer (dtype, first_name, last_name, birth_date, manager_id) val
 insert into performer (dtype, first_name, last_name, birth_date, manager_id) values ('S','Eric', 'Clapton', '1945-03-30', 1);
 insert into performer (dtype, first_name, last_name, birth_date, manager_id) values ('S','John', 'Butler', '1975-04-01', 2);
 
-insert into album (singer_id, title, release_date) values (1, 'The Search For Everything', '2017-01-20');
-insert into album (singer_id, title, release_date) values (1, 'Battle Studies', '2009-11-17');
-insert into album (singer_id, title, release_date) values (2, 'From The Cradle ', '1994-09-13');
-insert into album (singer_id, title, release_date) values (3, 'Everything is circle ', '1998-09-13');
+insert into album (singer_id, title, release_date) values (2, 'The Search For Everything', '2017-01-20');
+insert into album (singer_id, title, release_date) values (2, 'Battle Studies', '2009-11-17');
+insert into album (singer_id, title, release_date) values (3, 'From The Cradle ', '1994-09-13');
+insert into album (singer_id, title, release_date) values (4, 'Everything is circle ', '1998-09-13');
 
 insert into instrument (instrument_id, INSTRUMENT_TYPE) values ('Guitar', 'STRING');
 insert into instrument (instrument_id, INSTRUMENT_TYPE) values ('Piano', 'STRING');

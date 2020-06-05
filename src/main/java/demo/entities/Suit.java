@@ -5,19 +5,13 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Table(name = "SUIT")
+@Embeddable
 public class Suit implements Serializable {
 
-    @Id
-    @Column(name = "SUIT_ID", nullable = false)
+    @Column(name = "SUIT")
     private String suit;
-
-    @ManyToMany
-    @JoinTable(name = "DANCER_SUIT",
-            joinColumns = @JoinColumn(name = "SUIT_ID"),
-            inverseJoinColumns = @JoinColumn(name = "DANCER_ID"))
-    private Set<Singer> singers = new HashSet<>();
+    private int height;
+    private int weight;
 
     public String getSuit() {
         return suit;
@@ -27,11 +21,28 @@ public class Suit implements Serializable {
         this.suit = suit;
     }
 
-    public Set<Singer> getSingers() {
-        return singers;
+    public int getHeight() {
+        return height;
     }
 
-    public void setSingers(Set<Singer> singers) {
-        this.singers = singers;
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    @Override
+    public String toString() {
+        return "Suit{" +
+                "suit='" + suit + '\'' +
+                ", height='" + height + '\'' +
+                ", weight='" + weight + '\'' +
+                '}';
     }
 }

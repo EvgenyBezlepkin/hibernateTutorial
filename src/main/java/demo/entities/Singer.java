@@ -29,6 +29,7 @@ public class Singer extends Performer {
 	public static final String FIND_SINGER_BY_ID = "Singer.findById";
 	public static final String FIND_ALL_WITH_ALBUM = "Singer.findAllWithAlbum";
 
+
 	@OneToOne
 	private Manager manager;
 
