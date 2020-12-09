@@ -20,7 +20,7 @@ public class InstrumentDaoImpl implements InstrumentDao {
 
 	private static final Log logger = LogFactory.getLog(InstrumentDaoImpl.class);
 
-	// создает объекты Session, внутреннее состояние SF неизменно,  internal state includes all of the metadata about ORM.
+	// создает объекты Session, внутреннее состояние SF неизменно, internal state includes all of the metadata about ORM.
 	private SessionFactory sessionFactory;
 
 

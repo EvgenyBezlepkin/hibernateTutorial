@@ -16,7 +16,10 @@ import java.util.Set;
 public class App {
 
     public static void main(String... args) {
+        // читать конфигурационный класс, а не файл
         GenericApplicationContext ctx = new AnnotationConfigApplicationContext(HibernateConfig.class);
+
+        // получаем бины
         SingerDao singerDao = ctx.getBean(SingerDao.class);
         InstrumentDao instrumentDao = ctx.getBean(InstrumentDao.class);
         ManagerDao managerDao = ctx.getBean(ManagerDao.class);
@@ -42,7 +45,7 @@ public class App {
 //        album.setReleaseDate(new java.sql.Date((new GregorianCalendar(1961, 7, 18)).getTime().getTime()));
 //        singer.addAlbum(album);
 //        Performer performer = singerDao.save(singer);
-//
+
 //        Manager manager = new Manager();
 //        manager.setFirstName("Jon");
 //        manager.setLastName("Neue");

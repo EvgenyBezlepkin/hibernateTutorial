@@ -1,7 +1,12 @@
 
+<!--в настоящем примере конфигурация находится в java классе HibernateConfig-->
+
+<!--единица хранения объединяет отображение классов и соединение с бд-->
 <persistence-unit name="demo">
     <description>Hibernate EntityManager Demo</description>
+<!--    классы, хранимые в бд-->
     <class>demo.entities</class>
+<!--    запретить поиск отображаемых классов-->
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
         <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>

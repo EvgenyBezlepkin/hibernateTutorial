@@ -5,35 +5,21 @@ import javax.persistence.*;
 @Entity
 public class Manager {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "FIRST_NAME")
     private String firstName;
-
-    @Column(name = "LAST_NAME")
     private String lastName;
-
-    // TODO аннотация @OneToOne - (отображается как внешний ключ на связанную табицу)
-    // аннотация @JoinTable создаст промежуточную таблицу к этой связи
-    @OneToOne
-	// TODO аннотация @PrimaryKeyJoinColumn
-	//@PrimaryKeyJoinColumn
-	// стратегия, при которой две связанные аннотацией @OneToOne таблицы будут иметь общий первичный ключ (без внешнего ключа)
     private Singer singer;
+    private SoundRecordingStudio soundRecordingStudio;
+
 
     // TODO встроенный атрибут и переопределение имени его оригинальных полей
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name="name",
-            column = @Column(name = "SoundRecordingStudio_name")),
+                    column = @Column(name = "SoundRecordingStudio_name")),
             @AttributeOverride(name="address",
                     column = @Column(name = "SoundRecordingStudio_address")),
     })
-    private SoundRecordingStudio soundRecordingStudio;
-
-
     public SoundRecordingStudio getSoundRecordingStudio() {
         return soundRecordingStudio;
     }
@@ -42,6 +28,8 @@ public class Manager {
         this.soundRecordingStudio = soundRecordingStudio;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -50,6 +38,7 @@ public class Manager {
         this.id = id;
     }
 
+    @Column(name = "FIRST_NAME")
     public String getFirstName() {
         return firstName;
     }
@@ -58,6 +47,7 @@ public class Manager {
         this.firstName = firstName;
     }
 
+    @Column(name = "LAST_NAME")
     public String getLastName() {
         return lastName;
     }
@@ -66,6 +56,12 @@ public class Manager {
         this.lastName = lastName;
     }
 
+    // TODO аннотация @OneToOne - (отображается как внешний ключ на связанную табицу)
+    // аннотация @JoinTable создаст промежуточную таблицу к этой связи
+    @OneToOne
+    // TODO аннотация @PrimaryKeyJoinColumn
+    //@PrimaryKeyJoinColumn
+    // стратегия, при которой две связанные аннотацией @OneToOne таблицы будут иметь общий первичный ключ (без внешнего ключа)
     public Singer getSinger() {
         return singer;
     }

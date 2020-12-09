@@ -15,6 +15,7 @@ import java.util.Properties;
 
 @Configuration
 @ComponentScan(basePackages = "demo")
+// активирует возможности Spring бесшовной транзакции через @Transactional
 @EnableTransactionManagement
 @PropertySource(value = "classpath:db.properties")
 public class HibernateConfig {
@@ -26,20 +27,7 @@ public class HibernateConfig {
         this.env = env;
     }
 
-    private Properties hibernateProperties() {
-        Properties properties = new Properties();
-        properties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
-        properties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
-        properties.put("hibernate.hbm2ddl.auto", "create");
-        // количество операций обновления, которые дб сгруппированы в пакет
-        properties.put("hibernate.jdbc.batch_size", 10);
-        // количество записецй из результирующего набора
-        properties.put("hibernate.jdbc.fetch_size", 50);
-        // глубина внешних соединений
-        properties.put("hibernate.jdbc.fetch_depth", 3);
-        return properties;
-    }
-
+    // описывает подключение к базе данных
     @Bean
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
@@ -50,6 +38,29 @@ public class HibernateConfig {
         return dataSource;
     }
 
+    // свойства hibernate
+    // http://hibernate-refdoc.3141.ru/ch3.Configuration
+    private Properties hibernateProperties() {
+        Properties properties = new Properties();
+
+//        берет свойства из @PropertySource(value = "classpath:db.properties")
+
+        properties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
+        properties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
+
+//        задает свойства в методе
+
+        properties.put("hibernate.hbm2ddl.auto", "update");
+        // количество операций обновления, которые дб сгруппированы в пакет
+        properties.put("hibernate.jdbc.batch_size", 10);
+        // количество записецй из результирующего набора
+        properties.put("hibernate.jdbc.fetch_size", 50);
+        // глубина внешних соединений
+        properties.put("hibernate.jdbc.fetch_depth", 3);
+        return properties;
+    }
+
+    // фабрика сеансов, выдает объекты, реализующие интрефейс Session
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
@@ -59,6 +70,7 @@ public class HibernateConfig {
         return sessionFactory;
     }
 
+    // диспетчер транзакций
     @Bean
     public HibernateTransactionManager transactionManager() {
         HibernateTransactionManager transactionManager = new HibernateTransactionManager();

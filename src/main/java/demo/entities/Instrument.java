@@ -11,28 +11,25 @@ import java.util.Set;
 @Table(name = "instrument")
 public class Instrument implements Serializable {
 
-	@Id
-	@Column(name = "INSTRUMENT_ID", nullable = false)
 	private String instrumentId;
-
-	// TODO втроенный Enum
-	// аннотация вставляет переменную перечисления вместо порядкового номера
-	@Enumerated(EnumType.STRING)
-	@Column(name = "INSTRUMENT_TYPE", nullable = false)
 	private InstrumentType instrumentType;
-
-	// TODO аннотация @ManyToMany - подчиненная таблица
-	@ManyToMany
-	@JoinTable(name = "singer_instrument",
-			joinColumns = @JoinColumn(name = "INSTRUMENT_ID"),
-			inverseJoinColumns = @JoinColumn(name = "SINGER_ID"))
 	private Set<Singer> singers = new HashSet<>();
 
 
+	@Id
+	@Column(name = "INSTRUMENT_ID", nullable = false)
 	public String getInstrumentId() {
 		return this.instrumentId;
 	}
 
+	// TODO аннотация @ManyToMany - подчиненная таблица
+	@ManyToMany
+	// определяет имя и параметры соединяющей таблицы
+	// joinColumns - имя поля с этой стороны, foreignKey - имя внешнего ключа
+	// inverseJoinColumns - имя поля с противоположной стороны
+	@JoinTable(name = "SINGER_INSTRUMENT",
+			joinColumns = @JoinColumn(name = "INSTRUMENT_ID"),
+			inverseJoinColumns = @JoinColumn(name = "SINGER_ID"))
 	public Set<Singer> getSingers() {
 		return this.singers;
 	}
@@ -45,6 +42,10 @@ public class Instrument implements Serializable {
 		this.instrumentId = instrumentId;
 	}
 
+	// TODO втроенный Enum
+	// аннотация вставляет переменную перечисления вместо порядкового номера
+	@Enumerated(EnumType.STRING)
+	@Column(name = "INSTRUMENT_TYPE", nullable = false)
 	public InstrumentType getInstrumentType() {
 		return instrumentType;
 	}
